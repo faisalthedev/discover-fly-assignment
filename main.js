@@ -20,3 +20,18 @@ function calculateTicketPrice(ticketClass, isIncrease) {
 	document.getElementById(ticketClass + "-ticket-quantity").value = totalTicket;
 	totalCalculation();
 }
+
+// Total Calculation
+function totalCalculation() {
+	const firstClassConvert = getTicketQuantity("firstClass-ticket-quantity");
+	const economyClassConvert = getTicketQuantity("economyClass-ticket-quantity");
+
+	const ticketPrice = firstClassConvert * 150 + economyClassConvert * 100;
+	document.getElementById("subTotal").innerText = ticketPrice;
+
+	const totalVat = Math.round(ticketPrice * 0.1);
+	document.getElementById("vat").innerText = totalVat;
+
+	const totalPrice = ticketPrice + totalVat;
+	document.getElementById("total").innerText = totalPrice;
+}
